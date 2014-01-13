@@ -1,27 +1,27 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
 
-		<title>NSTouk</title>
+  <title>NSTouk</title>
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="css/nstouk.css">
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="css/nstouk.css">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+  </script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -33,48 +33,120 @@
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
-        <div class="slides">
+      <div class="slides">
 
-<section 
-         data-background="#282828" 
-         data-background-transition="slide"
-         class="initial">
+      <section 
+        data-background="#282828" 
+        data-background-transition="slide"
+        class="initial">
 
-NSTouk
+        <h1>NSTouk</h1>
 
-</section>
+        <h2>czyli Objective-C dla Javowca</h2>
 
-        
-			</div>
+      </section>
 
-		</div>
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+        <div class="">
+          <h2>Już teraz możesz pisać Objective-C!</h2>
+        </div>
 
-		<script>
+        </br>
 
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        <div class="fragment">
+          <h1><a href="https://code.google.com/p/j2objc/">j2objc</a></h1>
+          </br>
+          <h5><a href="https://code.google.com/p/j2objc/">code.google.com/p/j2objc/</a></h5>
+        </div>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        <aside class="notes">
+        My dzisiaj też zabawimy się w takiego translatora.
+        </aside>
 
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      oc to język dynamiczny - wysyłanie wiadomości zamiast wykonywania metod
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      o tym, która metoda zostanie wykonana decyduje runtime
+
+      objc_msgSend() + warianty
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      [obj message];
+
+      objc_msgSend(obj, @selector(message));
+
+      </section>
+
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+Reveal.initialize({
+  controls: true,
+  progress: true,
+  history: true,
+  center: true,
+
+        // Factor of the display size that should remain empty around the content
+        // margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        // minScale: 0.2,
+        // maxScale: 2.0,
+
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        multiplex: {
+        // Example values. To generate your own, see the socket.io server instructions.
+        secret: '13896391266375424299', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+        id: '02ad091456ac7d2f', // Obtained from socket.io server
+        url: '169.254.229.212:1948' // Location of your socket.io server
+        },
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+       { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+       { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+       { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+       { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+       { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+       // { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        { src: 'socket.io/socket.io.js', async: true },
+        { src: 'plugin/multiplex/master.js', async: true },
+        { src: 'plugin/multiplex/client.js', async: true }
 
-		</script>
+       ]
+     });
 
-	</body>
+</script>
+
+</body>
 </html>

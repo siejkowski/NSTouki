@@ -1,3 +1,31 @@
+https://developer.apple.com/library/ios/documentation/general/conceptual/DevPedia-CocoaCore/Category.html
+https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/ClassClusters/ClassClusters.html#//apple_ref/doc/uid/TP40010810-CH4-SW73
+https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210
+
+warstwa 1 - syntax:
+* definicja klasy (od razu podział na prywatne / publiczne)
+* wywoływanie metody
+* pola klasy (propertisy vs ivary)
+* protokoły
+* kategorie
+* class extensions
+* bloki
+
+
+warstwa 2 - jak to działa:
+
+
+warstwa 3 - narzędzia:
+* gcd
+* kolekcje
+
+
+warstwa 4 - patterny:
+* delegacja
+* KVO
+* callbacki
+
+
 @protocol == interface (ale z dodatkiem @optional)
 @interface == publiczne api (header)
 @implementation == implementacja

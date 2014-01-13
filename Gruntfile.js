@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 
 		zip: {
 			'reveal-js-presentation.zip': [
-				'NSTouki.html',
+				'index.html',
 				'css/**',
 				'js/**',
 				'lib/**',
