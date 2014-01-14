@@ -10,10 +10,14 @@ warstwa 1 - syntax:
 * kategorie
 * class extensions
 * bloki
+* brak namespaców
 
 
 warstwa 2 - jak to działa:
-
+* struktura Class, isa, meta-classy, NSObject/NSProxy (+ protokół)
+* obj_msgSend + warianty
+* struktura bloków
+* zarządzanie pamięcią i model pamięci
 
 warstwa 3 - narzędzia:
 * gcd

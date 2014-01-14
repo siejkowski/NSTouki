@@ -1,20 +1,23 @@
-//
-//  main.m
-//  NSTouk
-//
-//  Created by Krzysztof Siejkowski on 13/01/14.
-//  Copyright (c) 2014 touk.pl. All rights reserved.
-//
+#import "GentleClass.h"
+#import "NSString+Calmness.h"
+#import "Plot.h"
 
-int main(int argc, const char * argv[])
-{
-
+int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        
-        // insert code here...
-        NSLog(@"Hello, World!");
-        
+        GentleClass* gentleClass = [[GentleClass alloc] init];
+        RespectedClass* wellRespectedClass = [RespectedClass new];
+
+        Plot* plot = [Plot plotWithGentleClass:gentleClass wellRespectedClass:wellRespectedClass];
+
+        NSString* nervous = @"The nervous way:";
+        void (^nervousMetadata)() = ^{
+            NSLog(nervous);
+            };
+
+        [plot nervousConversationWithMetadata:nervousMetadata];
+        [plot calmConversationWithMetadata:^{
+            NSLog(@"The calm way");
+        }];
     }
     return 0;
 }
-
