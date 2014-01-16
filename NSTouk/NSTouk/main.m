@@ -1,6 +1,6 @@
 #import "GentleClass.h"
-#import "NSString+Calmness.h"
 #import "Plot.h"
+#import "LittleRuntime.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -18,6 +18,10 @@ int main(int argc, const char * argv[]) {
         [plot calmConversationWithMetadata:^{
             NSLog(@"The calm way");
         }];
+
+//        littleRuntime();
+
     }
     return 0;
 }
+

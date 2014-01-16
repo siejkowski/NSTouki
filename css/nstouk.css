@@ -7,7 +7,17 @@
   font-family: "Helvetica", sans-serif;
 }
 
-.reveal .slides .initial h1 {
+.reveal .slides h1 {
   text-shadow: 0 0 5px #02AEFF, 0 0 10px #02AEFF;
+  color: white;
+}
+
+.reveal .slides h2 {
+  text-shadow: 0 0 5px #02AEFF, 0 0 10px #02AEFF;
+  color: white;
+}
+
+.reveal .slides pre {
+  text-shadow: 0 0 0px #02AEFF, 0 0 0px #02AEFF;
   color: white;
 }

@@ -64,7 +64,7 @@
         </div>
 
         <aside class="notes">
-        My dzisiaj też zabawimy się w takiego translatora.
+          My dzisiaj też zabawimy się w takiego translatora.
         </aside>
 
       </section>
@@ -74,7 +74,49 @@
       data-background-transition="slide"
       class="initial">
 
-      oc to język dynamiczny - wysyłanie wiadomości zamiast wykonywania metod
+      
+      <div class="fragment"><h2>Spotkały się pewnego razu </br> dwie klasy...</h2></div>
+
+<aside class="notes">
+* definicja klasy (od razu podział na prywatne / publiczne)
+* wywoływanie metody
+* pola klasy (propertisy vs ivary)
+* protokoły
+* kategorie
+* class extensions
+* bloki
+* brak namespaców
+</aside>
+      
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      <div class="fragment"><h2>Jak to jest zrobione?</h2></div>
+
+      </br>
+
+      <div class="fragment">
+        <h1>
+          <a href="http://opensource.apple.com/source/objc4/objc4-551.1/runtime/">Objective-C
+            <br/>Runtime</a>
+        </h1>
+      </div>
+
+      </br>
+
+      <div class="fragment">
+        <h4>
+          <a href="http://opensource.apple.com/source/objc4/objc4-551.1/runtime/">opensource.apple.com/source/objc4/objc4-551.1/runtime</a>
+        </h4>
+      </div>
+
+      <aside class="notes">
+      Runtime to zwykła biblioteka w C dodająca do niego obiektowość
+      </aside>
 
       </section>
 
@@ -83,9 +125,22 @@
       data-background-transition="slide"
       class="initial">
 
-      o tym, która metoda zostanie wykonana decyduje runtime
+      <h2>obiektowość</h2>
 
-      runtime to zbiór makr, struktur i funkcji, napisany w c i assemblerze
+      <h3><pre><code data-trim>
+typedef struct objc_class *Class;
+typedef struct objc_object *id;
+
+struct objc_object {
+  uintptr_t isa;
+  /* ivars */
+}
+
+struct objc_class : objc_object {
+  Class superclass;
+  /* cache, ivars description list, methods list */
+}
+      </code></pre></h3>
 
       </section>
 
@@ -94,9 +149,21 @@
       data-background-transition="slide"
       class="initial">
 
-      [obj message];
+      <h2><pre><code data-trim>
+[obj message];
+      </code></pre></h2>
+      <h1>⬇</h1>
+      <h2><pre><code data-trim>
+objc_msgSend(obj, @selector(message));
+      </code></pre></h2>︎
 
-      objc_msgSend(obj, @selector(message));
+      <div class="fragment">
+<h2>@selector ?</h2>
+      </div>
+
+      <aside class="notes">
+      czym jest selektor?
+      </aside>
 
       </section>
 
@@ -105,9 +172,159 @@
       data-background-transition="slide"
       class="initial">
 
-      [obj message];
+      <h2><pre><code data-trim>
+- (NSString*)string:(NSString* string) { 
+/* ... */ 
+}
+      </code></pre></h2>
+      <h1>⬇</h1>
+      <h2><pre><code data-trim>
+NSString* string(id self, 
+                 SEL _cmd, 
+                 NSString* string) 
+{ 
+  /* ... */ 
+}
+      </code></pre></h2>︎
 
-      objc_msgSend(obj, @selector(message));
+      <div class="fragment">
+<h2>SEL _cmd ?</h2>
+      </div>      
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h1>message forwarding</h1>
+</br></br>
+      <div class="fragment">
+<h3>metody identyfikowane są w runtimie</h3>
+      </div>
+</br></br>
+      <div class="fragment">
+<h3>wyjątek też pójdzie w runtimie</h3>
+      </div>
+
+      <aside class="notes">
+można dodać metodę w runtime, jeśli jej nie znaleziono, lub przerzucić ją do innego obiektu
+      </aside>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>dynamiczność</h2>
+<h3><pre><code data-trim>
+      [object performSelector:@selector(selector)];
+</code></pre></h3>
+<h3><pre><code data-trim>
+      -(SEL)soMuchHigherOrderEatThisJava:(SEL) { /* ... */ }
+</code></pre></h3>
+<h3><pre><code data-trim>
+      [classes valueForKeyPath:@"method.chain.lol"];
+</code></pre></h3>
+<h3><pre><code data-trim>
+      method_exchangeImplementations(original, new);
+</code></pre></h3>
+<h3><pre><code data-trim>
+objc_allocateClassPair(Class superclass, 
+                       const char *name, 
+                       size_t extraBytes)
+</code></pre></h3>
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>refleksja</h2>
+<h3><pre><code data-trim>
+      [object isMemberOfClass:[SomeClass class]];
+</code></pre></h3>
+
+<h3><pre><code data-trim>
+      [object isKindOfClass:[SomeClass class]];
+</code></pre></h3>
+
+<h3><pre><code data-trim>
+      [object conformsToProtocol:@protocol(SomeProtocol)];
+</code></pre></h3>
+
+<h3><pre><code data-trim>
+      [object respondsToSelector:@selector(SomeMethod)];
+</code></pre></h3>
+<h3><pre><code data-trim>
+      Method * class_copyMethodList(Class c, unsigned int *count) 
+</code></pre></h3>
+
+      <aside class="notes">
+tyle o runtime
+      </aside>
+
+      </section>
+
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>zarządzanie pamięcią</h2>
+
+<h2><pre><code data-trim>id object = [Class alloc];</code></pre></h2>
+<h2><pre><code data-trim>Class object = [object init];</code></pre></h2>
+<h2><pre><code data-trim>Class object = [Class new]; 
+  (+ helpers like [NSArray array])</code></pre></h2>
+<h2><pre><code data-trim>[object dealloc];</code></pre></h2>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>MRC vs ARC</h2>
+<h2><pre><code data-trim>[object retain];</code></pre></h2>
+<h2><pre><code data-trim>[object release];</code></pre></h2>
+<h2><pre><code data-trim>[object autorelease];</code></pre></h2>
+<h1>⬇</h1>
+<h2><pre><code data-trim> // ARC was here </code></pre></h2>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>ARC vs bloki</h2>
+<h2><pre><code data-trim>
+self.myLovelyBlock = ^{
+  [self whatever]; // OMG it's a cycle!
+}
+</code></pre></h2>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+__weak typeof(self) bself = self;
+self.myLovelyBlock = ^{
+  [bself whatever]; // OMG it's weak!
+}
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+[nil method] == nil // YES!</code></pre></h2>
+</div>
 
       </section>
 
@@ -137,9 +354,9 @@ Reveal.initialize({
 				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
         multiplex: {
         // Example values. To generate your own, see the socket.io server instructions.
-        secret: '13896391266375424299', // Obtained from the socket.io server. Gives this (the master) control of the presentation
-        id: '02ad091456ac7d2f', // Obtained from socket.io server
-        url: '169.254.229.212:1948' // Location of your socket.io server
+        secret: '13898925451442871309', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+        id: '41e064cd762404cf', // Obtained from socket.io server
+        url: 'localhost' // Location of your socket.io server
         },
 				// Optional libraries used to extend on reveal.js
 				dependencies: [

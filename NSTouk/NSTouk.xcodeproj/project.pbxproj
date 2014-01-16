@@ -14,6 +14,7 @@
 		790005A1AF3C5DEEA9A8ACE3 /* GentleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 790005C53D8B1AB4E8410417 /* GentleClass.m */; };
 		790008BA87E16868EE42C3C5 /* Plot.m in Sources */ = {isa = PBXBuildFile; fileRef = 790004FF25AD0472145E8F9B /* Plot.m */; };
 		79000EAF8653A1F6B9C2533E /* RespectedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 79000C6653668A6EBC60085D /* RespectedClass.m */; };
+		79000F67923AE786947D7193 /* LittleRuntime.h in Sources */ = {isa = PBXBuildFile; fileRef = 790009E19DB0A329555EF54F /* LittleRuntime.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,7 @@
 		790004FF25AD0472145E8F9B /* Plot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plot.m; sourceTree = "<group>"; };
 		79000571A826FAF1A77A20B3 /* RespectedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespectedClass.h; sourceTree = "<group>"; };
 		790005C53D8B1AB4E8410417 /* GentleClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GentleClass.m; sourceTree = "<group>"; };
+		790009E19DB0A329555EF54F /* LittleRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LittleRuntime.h; sourceTree = "<group>"; };
 		790009E9078B003F2F52DDB3 /* Plot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plot.h; sourceTree = "<group>"; };
 		79000C6653668A6EBC60085D /* RespectedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RespectedClass.m; sourceTree = "<group>"; };
 		79000EA3A10601F56C4F4E9F /* NSString+Calmness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Calmness.m"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				79000141A5C3B6E8887D584B /* GentleClass.h */,
 				790004FF25AD0472145E8F9B /* Plot.m */,
 				790009E9078B003F2F52DDB3 /* Plot.h */,
+				790009E19DB0A329555EF54F /* LittleRuntime.h */,
 			);
 			path = NSTouk;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				7900011BF407A816ACBBF79A /* NSString+Calmness.m in Sources */,
 				790005A1AF3C5DEEA9A8ACE3 /* GentleClass.m in Sources */,
 				790008BA87E16868EE42C3C5 /* Plot.m in Sources */,
+				79000F67923AE786947D7193 /* LittleRuntime.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
