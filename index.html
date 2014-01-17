@@ -90,26 +90,94 @@ My dzisiaj też zabawimy się w takiego translatora.
 <aside class="notes">
 
 Kolejność:
+
 - main.m:
  -> bardzo podobne do Javy
  -> nie ma namespaców
  -> @autoreleasepool - zarządzanie pamięcią
  -> @{coś} - słowo kluczowe w Obj-C, tłumaczone przez kompilator
  -> Objective-C - język kompilowany, Clang - kompilator dla Objective-C, oparty na LLVM
- -> 
-- NSTouk-Prefix.pch 
+ -> wskaźnik - obiekty alokowane są na stercie, a na stosie tylko pointery
+ -> Nawiasy kwadratowe - nie wywołuje się metod, ale wysyła wiadomości
+ -> Dwa rodzaje wiadomości - instancyjne i klasowe - składa się to na konstruktor
+ 
+- GentleClass.h:
+ -> Potrzebujemy dwóch klas - na klasę składają się dwa pliki
+ -> Header jest publiczny, m jest prywatny
+ -> NSObject - to jak object w Javie
+ -> W m można klasy wewnętrzne tworzyć, ale tylko prywatne - 
+ brak zakresow oznacza inny, słabszy podział na prywatne i publiczne
+ -> NSTouk-Prefix.pch 
 
+- RespectedClass.h:
+ -> możemy definiować protokoły wewnątrz headerów innych klas - zwykle tak się to robi
+ -> protokół może meć @required i @optional
+ -> Nazwy są przeplatane argumentami
+ -> Argument jest podany w nazwie - konwencja, ale zawsze stosowana
+ -> bardzo proste enumy - tylko integery w tle, ale za to mamy makra NS_ENUM i NS_OPTION
 
-* definicja klasy (od razu podział na prywatne / publiczne)
-* wywoływanie metody
-* pola klasy (propertisy vs ivary)
-* protokoły
-* kategorie
-* class extensions
-* bloki
-* brak namespaców
+- GentleClass.h:
+ -> <protokol> do implementacji protokołów
 
-Jak to jest zrobione?
+- Plot.h:
+ -> @class do zaznaczenia, że klasy będą dostępne po zlinkowaniu
+ -> metoda klasowa plotWith...
+
+- Plot.m:
+ -> wzorzec singletona
+ -> gcd - dispatch once
+ -> metoda klasowa plotWith...
+ -> metoda instancyjna initWith...
+ -> class extension - chowanie i nadpisywanie propertisów
+ -> @property - setter/getter + ivar, a w zasadzie obietnica (@dynamic)
+ -> konwencja syntezowanych ivarów - _ivar
+
+- Plot.m:
+ -> blocki to domknięcia
+ -> kopiują sobie wszystkie referencje, które są w nich wykorzystywane
+ -> fucking block syntax - więc najczęściej typedef
+
+- main.m: - tutaj dopisujemy blocka
+
+- Plot.m:
+  -> nervousConversationWithBlocking
+  -> tworzenie i wywołanie blocka - uwaga na nil!
+  -> nil to null, są też inne - adress nila to zawsze 0x0
+
+- GentleClass.h:
+ -> greetingsForDayTime
+ -> z definicji większość typów jest immutable
+ -> mutable też są dostępne, ale trzeba je implicite używać
+ -> rozwlekłe nazwy metod - konwencja, ale wszyscy ją stosują
+ -> stringByReplacingOccurencesOfString
+ -> copy / mutableCopy - najszybszy i najprostrzy sposób na przejście mutable <-> imutable
+
+- RespectedClass.m:
+ -> responseForGreetings - co to za (id) jako argument?
+ -> id - object w objective c, dowolny - to jest dynamizm
+ -> jak dynamizm, to introspekcja - isMemberOfClass
+ -> nervousResponse
+ -> kolekcje - NSArray, NSMutableArray, NSMutableIndexSet
+ -> najpopularniejsza enumeracja - z użyciem bloku
+ -> object literals - tablica[element] == [tablica setObject: atIndexedSubscript], jest też taki do słowników przez [slownik setObject:(id)obj forKeyedSubscript:]
+ -> można sobie taką metodę napisać do dowolnek klasy - przydatne do tworzenia dsli
+ -> fast enumeration prawie jak w javie
+
+- Plot.m:
+ -> ternary operator w objective c i c block extensions - małe, przydatne sztuczki syntaktyczne
+
+- NSString+Calmness.h:
+ -> kategorie to bardzo często wykorzystywany mechanizm
+ -> można rozszerzać o kategorie klasy z biblioteki
+ -> implementacja NSString jset rozbita na kategorie
+
+- NSString+Calmness.m:
+ -> implementacja bardzo oczywista, kategoria ma dostęp do całego interfejsu klasy - w tym do ivarów, nawet prywatnych
+ -> kategorie nie mogę nadpisywać metod już zdefiniowanych - coś się wywoła, ale nie ma gwarancji, co - undefined behavior
+ -> kategorie są globalne - raz stworzysz, działa wszędzie
+
+ Jak to jest zrobione?
+
 </aside>
       
       </section>
@@ -139,6 +207,12 @@ Jak to jest zrobione?
 
       <aside class="notes">
       Runtime to zwykła biblioteka w C dodająca do niego obiektowość
+
+      siedzi w urządzeniu i jest linkowana dynamicznie
+
+      otwarte źródła (yey!), ale koszmarne do czytania (makaron asseblera, makr i optymalizacji, warstwy kolejnych wstecznych kompatybilności)
+
+      najbardziej interesujące są headery, a te są wszędzie dostępne - bo coś trzeba zaimportować przecież
       </aside>
 
       </section>
@@ -165,6 +239,16 @@ struct objc_class : objc_object {
 }
       </code></pre></h3>
 
+      <aside class="notes">
+      
+      to przybliżenie, bo obecnie runtime jest znacznie bardziej zoptymalizowany
+      jeśli czas, to anegdotka o isa w 64 bitach
+      objective c runtime 2.0 skrył wiele, ale koncepcja pozostała podobna
+
+      cache, ivars list, method list - to wszystko struktury - wejść do runtime.h
+
+      </aside>
+
       </section>
 
       <section 
@@ -185,7 +269,9 @@ objc_msgSend(obj, @selector(message));
       </div>
 
       <aside class="notes">
-      czym jest selektor?
+      objc_msgSend ma kilka wariantów i jest skrajnie zoptymalizowany - assembler z ręki
+
+      czym jest selektor? - unikalna nazwa funkcji w scopie
       </aside>
 
       </section>
@@ -214,6 +300,12 @@ NSString* string(id self,
 <h2>SEL _cmd ?</h2>
       </div>      
 
+      <aside class="notes">
+      
+      metody z dwukropkami tłumaczone są na podkreślniki
+
+      </aside>
+
       </section>
 
       <section 
@@ -233,6 +325,8 @@ NSString* string(id self,
 
       <aside class="notes">
 można dodać metodę w runtime, jeśli jej nie znaleziono, lub przerzucić ją do innego obiektu
+
+używane w proxy i w higher-order methods na przykład
       </aside>
 
       </section>
@@ -257,6 +351,11 @@ można dodać metodę w runtime, jeśli jej nie znaleziono, lub przerzucić ją 
 </code></pre></h3>
       </section>
 
+            <aside class="notes">
+method swizzling - technika wykorzystywana w testowaniu zwlaszcza 
+i w mnóstwie mechanizmow z foundation
+      </aside>
+
             <section 
       data-background="#282828" 
       data-background-transition="slide"
@@ -278,7 +377,7 @@ class_addMethod(Class cls, SEL name, IMP imp, const char *types)
 </code></pre></h3>
 
       <aside class="notes">
-tyle o runtime
+AssociatedObject jest fajny w połączeniu z kategoriami
       </aside>
 
       </section>
@@ -309,6 +408,8 @@ tyle o runtime
 </code></pre></h3>
 
       <aside class="notes">
+introspekcja jest bardzo często używana
+
 tyle o runtime
       </aside>
 
@@ -359,6 +460,12 @@ tyle o runtime
 <h1>⬇</h1>
 <h2><pre><code data-trim> // ARC was here </code></pre></h2>
 
+      <aside class="notes">
+reference counting jest super
+
+przez moment nawet garbage collector był, ale nie wszedł na długo
+      </aside>
+
       </section>
 
       <section 
@@ -387,6 +494,10 @@ self.myLovelyBlock = ^{
 [nil method] == nil // YES!</code></pre></h2>
 </div>
 
+      <aside class="notes">
+najgłębiej skrywana tajemnica iOSa
+      </aside>
+
 </section>
 
       <section 
@@ -400,7 +511,8 @@ self.myLovelyBlock = ^{
 
 <h2><pre><code data-trim>
 @property(weak, unsafe_unretained, copy, assign, nonatomic, readonly)</code></pre></h2>
-</div>
+
+</section>
 
 </section>
 
@@ -415,7 +527,7 @@ self.myLovelyBlock = ^{
        data-background="css/foundation.jpg"
       data-background-transition="slide"
       class="initial">
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><h1>Foundation</h1>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><h1>Foundation / narzędzia</h1>
       </section>
 
       <section 
@@ -427,21 +539,29 @@ self.myLovelyBlock = ^{
 
 <div class="fragment">
 <h2><pre><code data-trim>
-
+NSArray* / NSMutableArray*
 </code></pre></h2>
 </div>
 
 <div class="fragment">
 <h2><pre><code data-trim>
-
+NSDictionary* / NSMutableDictionary*
 </code></pre></h2>
 </div>
 
 <div class="fragment">
 <h2><pre><code data-trim>
-
+NSSet* / NSMutableSet*
 </code></pre></h2>
 </div>
+
+      <aside class="notes">
+immutable by default
+
+generalnie bardzo wydajne i dobrze zaimplementowane
+
+bardzo mało commonsów i zamienników
+      </aside>
 
       </section>
 
@@ -450,7 +570,7 @@ self.myLovelyBlock = ^{
       data-background-transition="slide"
       class="initial">
 
-<h2>bloki</h2>
+<a href="http://fuckingblocksyntax.com"><img src="css/blocks.png"></img></a>
 
       </section>
 
@@ -461,6 +581,35 @@ self.myLovelyBlock = ^{
 
 <h2>GCD</h2>
 
+<div class="fragment">
+<h2><pre><code data-trim>
+dispatch_sync / dispatch_async
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+dispatch_once
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+dispatch_after / dispatch_time
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+dispatch_queue_create / dispatch_get_main_queue
+</code></pre></h2>
+</div>
+
+
+      <aside class="notes">
+bardzo fajna rzecz, super proste api
+      </aside>
+
       </section>
 
       <section 
@@ -469,6 +618,16 @@ self.myLovelyBlock = ^{
       class="initial">
 
 <h2>makra</h2>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+#define
+</code></pre></h2>
+</div>
+
+      <aside class="notes">
+nie ma magii, ale czasem się przydaje
+      </aside>
 
       </section>
 </section>

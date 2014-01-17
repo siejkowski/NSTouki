@@ -1,6 +1,5 @@
 #import "Plot.h"
 #import "GentleClass.h"
-#import "RespectedClass.h"
 #import "NSString+Calmness.h"
 
 static NSString* const c_REMEMBERED_NAME = @"Steve";
@@ -31,7 +30,6 @@ static NSString* const c_REMEMBERED_NAME = @"Steve";
     });
     return instance;
 }
-
 
 - (void)nervousConversationWithBlocking:(Metadata)metadata {
     if (metadata)

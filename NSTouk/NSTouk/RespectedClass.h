@@ -1,7 +1,7 @@
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, kDayTime) {
     kMorning,
     kEvening
-} kDayTime;
+};
 
 @protocol BeingRespectful
 

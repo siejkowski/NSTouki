@@ -1,6 +1,5 @@
 #import "GentleClass.h"
 #import "Plot.h"
-#import "LittleRuntime.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -10,7 +9,7 @@ int main(int argc, const char * argv[]) {
         Plot* plot = [Plot plotWithGentleClass:gentleClass wellRespectedClass:wellRespectedClass];
 
         NSString* nervous = @"The nervous encounter:";
-        void (^nervousMetadata)() = ^{
+        Metadata nervousMetadata = ^{
             NSLog(nervous);
             };
 

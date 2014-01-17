@@ -87,13 +87,29 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 20779,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 107.0,
+		"height": 127.0,
 		"selected_items":
 		[
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
 			[
 				"encod",
 				"HTML: Encode Special Characters"
@@ -208,8 +224,25 @@
 	},
 	"file_history":
 	[
-		"/Users/krzysztofsiejkowski/Projects/jitter/3dp/test.scad",
 		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/css/nstouk.css",
+		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/pomysly.txt",
+		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/NSToukJ/src/Main.java",
+		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/NSToukJ/src/GentleClass.java",
+		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/NSToukJ/src/RespectedClass.java",
+		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/NSToukJ/src/Calmness.java",
+		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/NSToukJ/src/Plot.java",
+		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/css/theme/night.css",
+		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/uk.lproj/Localizable.strings",
+		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/ru.lproj/Localizable.strings",
+		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/pl.lproj/Localizable.strings",
+		"/Users/krzysztofsiejkowski/Projects/sejm-ngram/backend/json-common/src/main/java/org/sejmngram/common/Configuration.java",
+		"/Users/krzysztofsiejkowski/Projects/sejm-ngram/backend/json-common/src/main/java/org/sejmngram/common/json/JsonDateSerializer.java",
+		"/Users/krzysztofsiejkowski/Projects/sejm-ngram/backend/json-common/src/main/java/org/sejmngram/common/json/JsonProcessor.java",
+		"/Users/krzysztofsiejkowski/Projects/sejm-ngram/backend/json-common/src/main/java/org/sejmngram/common/json/datamodel/Dokument.java",
+		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/en.lproj/Localizable.strings",
+		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/cs.lproj/Localizable.strings",
+		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/Strings.h",
+		"/Users/krzysztofsiejkowski/Projects/jitter/3dp/test.scad",
 		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/index.html",
 		"/Users/krzysztofsiejkowski/Projects/jitter/3dp/test.gcode",
 		"/Users/krzysztofsiejkowski/Projects/jitter/3dp/test.stl",
@@ -258,7 +291,6 @@
 		"/Users/krzysztofsiejkowski/ToukProjects/prodavalnik-ios/.gitignore",
 		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales.xcodeproj/project.pbxproj",
 		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/Fonts.h",
-		"/Users/krzysztofsiejkowski/AllegroProjects/mobile.ios.allegro/MobileSales/MobileSales/Strings.h",
 		"/Users/krzysztofsiejkowski/Projects/FuturemindVASTAdSDK/docs/vast_sample.xml",
 		"/Users/krzysztofsiejkowski/ToukProjects/haboob/eaZymoney/build.gradle",
 		"/Users/krzysztofsiejkowski/AllegroProjects/ios/allegro/Helpers/Globals.mm",
@@ -281,7 +313,6 @@
 		"/Users/krzysztofsiejkowski/Projects/wjug/package.json",
 		"/Users/krzysztofsiejkowski/Projects/RestKit-0.20.3/Examples/RKTwitterCoreData/restkit.json",
 		"/Users/krzysztofsiejkowski/eclipses/workspace_scala/progfun-simulations/build.sbt",
-		"/Users/krzysztofsiejkowski/ToukProjects/NSTouki/pomysly.txt",
 		"/Users/krzysztofsiejkowski/AllegroProjects/ios/mobius_spostrzezenia.txt",
 		"/Users/krzysztofsiejkowski/ToukProjects/haboob/eaZymoney/src/main/AndroidManifest.xml",
 		"/Users/krzysztofsiejkowski/ToukProjects/allegro/2013.11.05_spotkanie.txt",
@@ -320,22 +351,7 @@
 		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/117.jade",
 		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/118.jade",
 		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/111.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/107.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/102.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/103.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/104.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/106.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/108.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/109.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/110.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/101.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/92.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/93.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/95.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/96.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/97.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/98.jade",
-		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/99.jade"
+		"/Users/krzysztofsiejkowski/Dropbox/projekty/wjug/app/partials/meetings/107.jade"
 	],
 	"find":
 	{
@@ -353,6 +369,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"*",
+			"h3",
 			" nowrap",
 			"nowrap",
 			"/9c",
@@ -423,8 +441,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 20779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3102,
+								3102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2.0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
