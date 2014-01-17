@@ -9,14 +9,14 @@ int main(int argc, const char * argv[]) {
 
         Plot* plot = [Plot plotWithGentleClass:gentleClass wellRespectedClass:wellRespectedClass];
 
-        NSString* nervous = @"The nervous way:";
+        NSString* nervous = @"The nervous encounter:";
         void (^nervousMetadata)() = ^{
             NSLog(nervous);
             };
 
-        [plot nervousConversationWithMetadata:nervousMetadata];
-        [plot calmConversationWithMetadata:^{
-            NSLog(@"The calm way");
+        [plot nervousConversationWithBlocking:nervousMetadata];
+        [plot calmConversationWithBlocking:^{
+            NSLog(@"The calm encounter:");
         }];
 
 //        littleRuntime();

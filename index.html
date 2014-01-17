@@ -36,48 +36,70 @@
       <div class="slides">
 
       <section 
-        data-background="#282828" 
+        data-background="css/hipsters.jpg" 
         data-background-transition="slide"
         class="initial">
 
         <h1>NSTouk</h1>
+
+      </br></br></br></br></br></br></br></br></br></br></br></br>
 
         <h2>czyli Objective-C dla Javowca</h2>
 
       </section>
 
       <section 
-      data-background="#282828" 
+      data-background="css/ity.jpg" 
       data-background-transition="slide"
       class="initial">
 
         <div class="">
-          <h2>Już teraz możesz pisać Objective-C!</h2>
+          <h2>I Ty już dziś możesz pisać<br/>Objective-C!</h2>
         </div>
 
         </br>
 
         <div class="fragment">
-          <h1><a href="https://code.google.com/p/j2objc/">j2objc</a></h1>
-          </br>
-          <h5><a href="https://code.google.com/p/j2objc/">code.google.com/p/j2objc/</a></h5>
+          <h1><a style="color: white;" href="https://code.google.com/p/j2objc/">j2objc</a></h1>
+          </br></br>
+          <h2><a style="color: white;" href="https://code.google.com/p/j2objc/">code.google.com/p/j2objc/</a></h2>
         </div>
 
         <aside class="notes">
-          My dzisiaj też zabawimy się w takiego translatora.
+
+NOTATKI do j2objc:
+
+Działa to całkiem nieźle.
+
+Javowe implementacje klas w objective-c.
+
+My dzisiaj też zabawimy się w takiego translatora.
+
         </aside>
 
       </section>
 
       <section 
-      data-background="#282828" 
+      data-background="css/meeting.png" 
       data-background-transition="slide"
       class="initial">
 
       
-      <div class="fragment"><h2>Spotkały się pewnego razu </br> dwie klasy...</h2></div>
+      <div class="fragment"><h2 style="color: #282828;">Spotkały się pewnego razu </br> dwie klasy...</h2></div>
 
 <aside class="notes">
+
+Kolejność:
+- main.m:
+ -> bardzo podobne do Javy
+ -> nie ma namespaców
+ -> @autoreleasepool - zarządzanie pamięcią
+ -> @{coś} - słowo kluczowe w Obj-C, tłumaczone przez kompilator
+ -> Objective-C - język kompilowany, Clang - kompilator dla Objective-C, oparty na LLVM
+ -> 
+- NSTouk-Prefix.pch 
+
+
 * definicja klasy (od razu podział na prywatne / publiczne)
 * wywoływanie metody
 * pola klasy (propertisy vs ivary)
@@ -86,32 +108,33 @@
 * class extensions
 * bloki
 * brak namespaców
+
+Jak to jest zrobione?
 </aside>
       
       </section>
 
-      <section 
+<section 
       data-background="#282828" 
       data-background-transition="slide"
       class="initial">
 
-      <div class="fragment"><h2>Jak to jest zrobione?</h2></div>
+      <section 
+      data-background="css/runtime.jpg"
+      data-background-transition="slide"
+      class="initial">
 
-      </br>
-
-      <div class="fragment">
         <h1>
-          <a href="http://opensource.apple.com/source/objc4/objc4-551.1/runtime/">Objective-C
+          <a style="color: white;" href="http://opensource.apple.com/source/objc4/objc4-551.1/runtime/">Objective-C
             <br/>Runtime</a>
         </h1>
-      </div>
 
       </br>
 
       <div class="fragment">
-        <h4>
-          <a href="http://opensource.apple.com/source/objc4/objc4-551.1/runtime/">opensource.apple.com/source/objc4/objc4-551.1/runtime</a>
-        </h4>
+        <h2>
+          <a style="color: white;" href="http://opensource.apple.com/source/objc4/objc4-551.1/runtime/">opensource.apple.com/source/objc4/objc4-551.1/runtime</a>
+        </h2>
       </div>
 
       <aside class="notes">
@@ -232,11 +255,32 @@ można dodać metodę w runtime, jeśli jej nie znaleziono, lub przerzucić ją 
 <h3><pre><code data-trim>
       method_exchangeImplementations(original, new);
 </code></pre></h3>
+      </section>
+
+            <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>rozszerzalność</h2>
 <h3><pre><code data-trim>
 objc_allocateClassPair(Class superclass, 
                        const char *name, 
                        size_t extraBytes)
 </code></pre></h3>
+
+<h3><pre><code data-trim>
+id objc_setAssociatedObject(id object, void *key);
+</code></pre></h3>
+
+<h3><pre><code data-trim>
+class_addMethod(Class cls, SEL name, IMP imp, const char *types) 
+</code></pre></h3>
+
+      <aside class="notes">
+tyle o runtime
+      </aside>
+
       </section>
 
       <section 
@@ -270,18 +314,35 @@ tyle o runtime
 
       </section>
 
+</section>
 
       <section 
       data-background="#282828" 
       data-background-transition="slide"
       class="initial">
 
+      <section 
+      data-background="css/memory.jpg"
+      data-background-transition="slide"
+      class="initial">
+
 <h2>zarządzanie pamięcią</h2>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>konstruktor / destruktor</h2>
+
 
 <h2><pre><code data-trim>id object = [Class alloc];</code></pre></h2>
 <h2><pre><code data-trim>Class object = [object init];</code></pre></h2>
 <h2><pre><code data-trim>Class object = [Class new]; 
   (+ helpers like [NSArray array])</code></pre></h2>
+  <h2><pre><code data-trim>Class second = [object copy];</code></pre></h2>
 <h2><pre><code data-trim>[object dealloc];</code></pre></h2>
 
       </section>
@@ -325,6 +386,239 @@ self.myLovelyBlock = ^{
 <h2><pre><code data-trim>
 [nil method] == nil // YES!</code></pre></h2>
 </div>
+
+</section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2><pre><code data-trim>
+@property(strong, assign, atomic, readwrite)
+</code></pre></h2>
+
+<h2><pre><code data-trim>
+@property(weak, unsafe_unretained, copy, assign, nonatomic, readonly)</code></pre></h2>
+</div>
+
+</section>
+
+</section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      <section 
+       data-background="css/foundation.jpg"
+      data-background-transition="slide"
+      class="initial">
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><h1>Foundation</h1>
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>kolekcje</h2>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+
+</code></pre></h2>
+</div>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>bloki</h2>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>GCD</h2>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>makra</h2>
+
+      </section>
+</section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      <section 
+      data-background="css/recap.jpg" 
+      data-background-transition="slide"
+      class="initial">
+
+<h2>powtórzenie</h2>
+
+      </section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      <div class="fragment">
+<h2><pre><code data-trim>
+@interface
+</code></pre></h2>
+</div>
+
+      <div class="fragment">
+<h2><pre><code data-trim>
+@implementation
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+@interface ( ... )
+</code></pre></h2>
+</div>
+
+      <div class="fragment">
+<h2><pre><code data-trim>
+@protocol
+</code></pre></h2>
+</div>
+
+      </section>
+
+            <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<div class="fragment">
+<h2><pre><code data-trim>
+@property
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+@dynamic
+</code></pre></h2>
+</div>
+
+
+<div class="fragment">
+<h2><pre><code data-trim>
+@selector
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><a href="http://fuckingblocksyntax.com"><pre><code data-trim>
+fuckingblocksyntax.com
+</code></pre></a></h2>
+</div>
+
+      </section>
+
+            <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<div class="fragment">
+<h2><pre><code data-trim>
+NSArray* / NSMutableArray*
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+NSDictionary* / NSMutableDictionary*
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+NSSet* / NSMutableSet*
+</code></pre></h2>
+</div>
+
+</section>
+
+            <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+<div class="fragment">
+<h2><pre><code data-trim>
+NSString* / NSMutableString*
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+NSNumber *
+</code></pre></h2>
+</div>
+
+<div class="fragment">
+<h2><pre><code data-trim>
+@"", @1, @[], @{}, @(1 + 2)
+</code></pre></h2>
+</div>
+
+</section>
+
+</section>
+
+      <section 
+      data-background="#282828" 
+      data-background-transition="slide"
+      class="initial">
+
+      <section 
+      data-background="css/source.jpg" 
+      data-background-transition="slide"
+      class="initial">
+
+<h1>źródła</h1>
+<br/>
+<h1>pytania</h1>
+<br/>
+<h1>podziękowania</h1>
+
+      </section>
 
       </section>
 

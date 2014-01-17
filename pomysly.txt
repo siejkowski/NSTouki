@@ -21,8 +21,9 @@ warstwa 2 - jak to działa:
 
 warstwa 3 - narzędzia:
 * gcd
+* bloki
 * kolekcje
-* makra i runtime
+* makra
 * KVO
 
 warstwa 4 - patterny:

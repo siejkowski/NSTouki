@@ -1,5 +1,3 @@
-#import <Foundation/Foundation.h>
-
 typedef void (^Metadata)();
 
 @class GentleClass;
@@ -9,7 +7,7 @@ typedef void (^Metadata)();
 
 + (instancetype)plotWithGentleClass:(GentleClass*)gentleClass wellRespectedClass:(RespectedClass*)wellRespectedClass;
 
-- (void)nervousConversationWithMetadata:(Metadata)metadata;
-- (void)calmConversationWithMetadata:(Metadata)metadata;
+- (void)nervousConversationWithBlocking:(Metadata)metadata;
+- (void)calmConversationWithBlocking:(Metadata)metadata;
 
 @end

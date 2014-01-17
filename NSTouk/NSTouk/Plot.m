@@ -33,14 +33,14 @@ static NSString* const c_REMEMBERED_NAME = @"Steve";
 }
 
 
-- (void)nervousConversationWithMetadata:(Metadata)metadata {
+- (void)nervousConversationWithBlocking:(Metadata)metadata {
     if (metadata)
         metadata();
     NSLog(@"%@", [self.gentleClass greetingsForDayTime:kEvening name:c_REMEMBERED_NAME]);
     NSLog(@"%@", [self.wellRespectedClass responseForGreetings:c_REMEMBERED_NAME]);
 }
 
-- (void)calmConversationWithMetadata:(Metadata)metadata {
+- (void)calmConversationWithBlocking:(Metadata)metadata {
     metadata ? metadata() : ({});
     NSLog(@"%@", [self.gentleClass greetingsForDayTime:kEvening name:c_REMEMBERED_NAME]);
     NSLog(@"%@", [[self.wellRespectedClass responseForGreetings:c_REMEMBERED_NAME] applyCalmness]);
