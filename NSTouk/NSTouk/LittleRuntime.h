@@ -22,6 +22,7 @@ void littleRuntime() {
     NSLog(@"RespectedClass methods: ");
     for (NSUInteger i = 0; i < numberOfProperties; i++) {
         Method method = methodList[i];
+        NSLog(@"address: %p", method);
         NSString *name = [[NSString alloc] initWithUTF8String:sel_getName(method_getName(method))];
         NSLog(@"- %@", name);
     }

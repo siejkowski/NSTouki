@@ -7,7 +7,7 @@ public class Main {
 
         Plot plot = Plot.getPlot(gentleClass, respectedClass);
 
-        final String nervous = "The nervous way:";
+        final String nervous = "The nervous encounter:";
 
         Plot.Metadata nervousMetadata = new Plot.Metadata() {
             @Override
@@ -20,7 +20,7 @@ public class Main {
         plot.calmConversation(new Plot.Metadata() {
             @Override
             public void run() {
-                System.out.println("The calm way:");
+                System.out.println("The calm encounter:");
             }
         });
     }
