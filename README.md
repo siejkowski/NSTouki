@@ -1,6 +1,6 @@
 ## Prezentacja na warsztaty "NSTouk" - 17.01.14, Touk, Warszawa
 
-Oparte na Reveal.JS by Hakim El Hattab, http://hakim.se.
+Silnik prezentacji to [Reveal.JS](https://github.com/hakimel/reveal.js) by [Hakim El Hattab](http://hakim.se).
 
 ### Full setup
 
